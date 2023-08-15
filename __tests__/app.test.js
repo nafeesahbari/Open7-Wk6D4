@@ -10,7 +10,7 @@ describe('User routes', () => {
       //ARRANGE
       const userData = {
         username: 'testuser',
-        password: 'testpassword',
+        password: 'Testpassword!',
         email: 'test@test.com'
       }
       User.create.mockResolvedValue(userData);
@@ -27,7 +27,7 @@ describe('User routes', () => {
       //ARRANGE
       const userData = {
         username: 'testuser',
-        password: 'testpassword',
+        password: 'Testpassword!',
         email: 'test@test.com'
       }
       User.create.mockRejectedValue(new Error('User creation failed'));
@@ -55,7 +55,7 @@ describe('User routes', () => {
 
       expect(response.status).toBe(500);
       expect(response.text).toContain(
-        "Password must contain at least one uppercase character and one special character"
+        "Password must contain an uppercase and a special character"
       );
     });
     it("should return error if email isn't valid", async () => {
@@ -71,7 +71,7 @@ describe('User routes', () => {
 
       expect(response.status).toBe(500);
       expect(response.text).toContain(
-        "Email format is invalid"
+        "Email is not correct"
       );
     });
   })
